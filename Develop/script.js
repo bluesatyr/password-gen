@@ -3,23 +3,21 @@
 
 function generatePassword() {
     // prompt for password length criteria
-    var pLength = window.prompt("Choose a password length from 8 characters up to 128 characters");
+    var pLength = prompt("Choose a password length from 8 characters up to 128 characters");
     // check to make sure it is a number from 8 and 128 characters long
-    if (parseInt(pLength) >= 8 && parseInt(pLength) <= 128){
-        continue;
+    if (parseInt(pLength) <= 8 || parseInt(pLength) >= 128){
+        alert("Your password length is outside of acceptable parameters! Try again!");
     } else {
-        window.alert("Your password length is outside of acceptable parameters! Try again!");
+        
     };
     console.log(pLength);
     
     // prompt for special character types
     var charTypes = []; // an array to store the boolean values of selected special character types. If true they are included, if false they are not included.
     
-    // Prompt for types. 
+    // Prompt for types. --Can i make a for loop to iterate over each type??
     
-    //Can i make a for loop to iterate over each type??
-    
-    // function characterTypes() {...}
+    // function or loop characterTypes() {...}
     var lCase = window.prompt("Do you wish to include lowercase characters? Type 'y' for yes or 'n' for no.")
     
     // catch invalid input, similar for each
@@ -30,12 +28,13 @@ function generatePassword() {
     } else {
         window.alert("You have made an invalid selection. Please try again.");
     }
+    console.log(charTypes);
     
     // return charTypes
     
         
 
-        function (pLength, charTypes) {
+        function randomize(pLength, charTypes) { //is it necessary to roll this within another function?
             var result  = '';
             var charset = '';
             const charOptions = ['abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '0123456789', '"!#$%&()*+,-/:;<=>?@[\]^_`{|}~_'];
@@ -59,7 +58,7 @@ function generatePassword() {
             //console.log(makeid(5));
         
     }   
-}
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
