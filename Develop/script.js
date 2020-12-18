@@ -15,19 +15,49 @@ function generatePassword() {
     // prompt for special character types
     var charTypes = []; // an array to store the boolean values of selected special character types. If true they are included, if false they are not included.
     
-    // Prompt for types. --Can i make a for loop to iterate over each type??
+    // Prompt for types.
     
-    // function or loop characterTypes() {...}
-    var lCase = window.prompt("Do you wish to include lowercase characters? Type 'y' for yes or 'n' for no.")
-    
-    // catch invalid input, similar for each
-    if (lCase === "y"){
+/*
+    if (window.confirm("Do you wish to include lowercase letters? \n Select 'OK' for yes, 'Cancel' for no.")) {
         charTypes[0] = true;
-    } else if (lCase === "y") {
-        charTypes[0] = false;       
     } else {
-        window.alert("You have made an invalid selection. Please try again.");
+        charTypes[0] = false;
     }
+    
+    if (window.confirm("Do you wish to include uppercase letters? \n Select 'OK' for yes, 'Cancel' for no.")) {
+        charTypes[1] = true;
+    } else {
+        charTypes[1] = false;
+    }
+    
+    if (window.confirm("Do you wish to include numbers? \n Select 'OK' for yes, 'Cancel' for no.")) {
+        charTypes[2] = true;
+    } else {
+        charTypes[2] = false;
+    }
+    
+    if (window.confirm("Do you wish to include special characters? \n Select 'OK' for yes, 'Cancel' for no.")) {
+        charTypes[3] = true;
+    } else {
+        charTypes[3] = false;
+    }
+    
+*/ 
+    
+    const promptTypes = ["lowercase letters", "uppercase letters", "numbers", "special characters"];
+    
+    for (var i=0; i<4; i++){
+        tPrompt = prompt("Do you wish to include " + promptTypes[i] +"? \n Select 'OK' for yes, 'Cancel' for no.");
+        charTypes[i] = tPrompt;
+    }
+    
+    console.log(charTypes);
+    
+    
+    if (charTypes[0] === false && charTypes[1] === false && charTypes[2] === false && charTypes[3] === false){
+        alert("Try again. You must include at least one of the four character types to generate a password.");
+    }
+    
     console.log(charTypes);
     
     // return charTypes
