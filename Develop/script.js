@@ -56,16 +56,8 @@ function generatePassword() {
             return result;
             }
 
-        console.log(makeid(5));
+            //console.log(makeid(5));
         
-        
-        
-        
-        */
-                       
-        for (var i=0; i<l; i++){
-            nChar = 
-        }
     }   
 }
 
