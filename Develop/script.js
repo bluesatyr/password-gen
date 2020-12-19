@@ -1,19 +1,4 @@
 // Assignment code here
-var criteria = function(){
-    // prompt for password length criteria
-    var num = prompt("Choose the number of characters for your password. Input a number from 8-128.");
-    // check to make sure it is a number from 8 to 128 characters long
-    if (parseInt(num) < 8 || parseInt(num) > 128){
-        alert("Your password length is outside of acceptable parameters! Try again!");
-        //restart criteria function
-        criteria();
-    } 
-    else {
-        console.log(num);
-        return num;
-    }
-};
-
 
 function generatePassword() {
     //declare variables
@@ -46,7 +31,20 @@ function generatePassword() {
 }
 
 // Criteria Function - prompts for password length
-
+var criteria = function(){
+    // prompt for password length criteria
+    var num = prompt("Choose the number of characters for your password. Input a number from 8-128.");
+    // check to make sure it is a number from 8 to 128 characters long
+    if (parseInt(num) < 8 || parseInt(num) > 128){
+        alert("Your password length is outside of acceptable parameters! Try again!");
+        //restart criteria function
+        return criteria();
+    } 
+    else {
+        console.log(num);
+        return num;
+    }
+};
 
 // Types Function - prompts user for character type, validates and saves in an array
 var types = function(){  
@@ -65,7 +63,7 @@ var types = function(){
     if (charTypes[0] === false && charTypes[1] === false && charTypes[2] === false && charTypes[3] === false){
         alert("Try again. You must include at least one of the four character types to generate a password.");
         //restart types function
-        types(); 
+        return types(); 
     }
     else {
         console.log(charTypes);
