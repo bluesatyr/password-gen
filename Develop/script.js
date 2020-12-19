@@ -1,52 +1,36 @@
 // Assignment code here
+var criteria = function(){
+    // prompt for password length criteria
+    var num = prompt("Choose the number of characters for your password. Input a number from 8-128.");
+    // check to make sure it is a number from 8 to 128 characters long
+    if (parseInt(num) < 8 || parseInt(num) > 128){
+        alert("Your password length is outside of acceptable parameters! Try again!");
+        //restart criteria function
+        criteria();
+    } 
+    else {
+        console.log(num);
+        return num;
+    }
+};
 
 
 function generatePassword() {
-    // prompt for password length criteria
-    var pLength = prompt("Choose a password length from 8 characters up to 128 characters");
-    // check to make sure it is a number from 8 to 128 characters long
-    if (parseInt(pLength) < 8 || parseInt(pLength) > 128){
-        alert("Your password length is outside of acceptable parameters! Try again!");
-    } else {
-        
-    };
-    console.log(pLength);
+    //declare variables
+    //var charTypes = [];
     
-    // prompt for special character types
-    var charTypes = []; // an array to store the boolean values of selected special character types. If true they are included, if false they are not included.
-    
-    // Prompt for types.
-    
+    var pLength = criteria();
+    var typesArray = types();
 
-    
-    const promptTypes = ["lowercase letters", "uppercase letters", "numbers", "special characters"];
-    
-    for (var i=0; i<4; i++){
-        tPrompt = confirm("Do you wish to include " + promptTypes[i] +"? \n Select 'OK' for yes, 'Cancel' for no.");
-        charTypes[i] = tPrompt;
-    }
-    
-    console.log(charTypes);
-    
-    
-    if (charTypes[0] === false && charTypes[1] === false && charTypes[2] === false && charTypes[3] === false){
-        alert("Try again. You must include at least one of the four character types to generate a password.");
-    }
-    
-    console.log(charTypes);
-    
-    // return charTypes
-    
-        
-
-
+    // function generateRandom
     var result  = '';
     var charset = '';
+    // char Options indices map to typesArray indices
     const charOptions = ['abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '0123456789', '"!#$%&()*+,-/:;<=>?@[\]^_`{|}~_'];
     
     // loop to update charset from user criteria
     for (var i=0; i<4; i++){
-        if (charTypes[i] === true){
+        if (typesArray[i] === true){
             charset = charset + charOptions[i];
         }
     }
@@ -59,7 +43,36 @@ function generatePassword() {
     }
     console.log(result);
     return result;
+}
+
+// Criteria Function - prompts for password length
+
+
+// Types Function - prompts user for character type, validates and saves in an array
+var types = function(){  
+    // creates an array to store boolean values for selected character types.
+    var charTypes = [];
+    // array of character type choices
+    var promptTypes = ["lowercase letters", "uppercase letters", "numbers", "special characters"];
+    // prompt for character types
+    for (var i=0; i<4; i++){
+        var tPrompt = confirm("Do you wish to include " + promptTypes[i] +"? \n Select 'OK' for yes, 'Cancel' for no.");
+        charTypes[i] = tPrompt;
     }
+    console.log(charTypes);
+    
+    // make sure at least one character type is chosen
+    if (charTypes[0] === false && charTypes[1] === false && charTypes[2] === false && charTypes[3] === false){
+        alert("Try again. You must include at least one of the four character types to generate a password.");
+        //restart types function
+        types(); 
+    }
+    else {
+        console.log(charTypes);
+        return charTypes;
+    }
+}
+
         
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
