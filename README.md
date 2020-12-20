@@ -8,7 +8,7 @@ A random password generator that can generate a password between 8 and 128 chara
 # Random Password Generator
 
 
-![Final site](./Develop/screenshot.png)
+![Final site](./assets/images/screenshot.png)
 
 
 ## Deployed at:
